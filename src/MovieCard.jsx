@@ -1,11 +1,11 @@
 import React from "react";
 
-function MovieCard() {
+function MovieCard({title, year, poster}) {
     return(
         <article>
-            <img src="" alt="Película img" />
-            <h2>Title</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste odio ad fugiat harum est dolor praesentium quam, aliquam, facilis temporibus iusto doloribus veniam dicta dolorem id delectus adipisci explicabo ducimus?</p>
+            <img src={poster} alt="Película img" />
+            <h2>{`Title: ${title}`}</h2>
+            <p>{year}</p>
         </article>
     );
 }
