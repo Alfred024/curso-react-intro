@@ -2,8 +2,8 @@ import React from "react";
 
 function BackButton() {
     return(
-        <button>
-            Back
+        <button className="changeCardButton">
+            <i class="fa-solid fa-arrow-left"></i>
         </button>
     );
 }

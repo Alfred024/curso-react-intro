@@ -2,10 +2,13 @@ import React from "react";
 
 function MovieCard({title, year, poster}) {
     return(
-        <article>
+        <article className="movieCard">
             <img src={poster} alt="Película img" />
-            <h2>{`Title: ${title}`}</h2>
-            <p>{year}</p>
+
+            <div>
+                <h2>{`Title: ${title}`}</h2>
+                <p>{`Release year: ${year}`}</p>
+            </div>
         </article>
     );
 }

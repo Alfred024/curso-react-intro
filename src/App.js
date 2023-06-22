@@ -26,27 +26,31 @@ function App() {
     <React.Fragment>
       <SearchMovie/>
 
-        <BackButton/>
+        <div className='movieCardContainer'>
+          <BackButton/>
+            {/* Display all the movies in array */}
+            {/* {movies.map(movie =>(
+              <MovieCard
+                title = {movie.title}
+                year = {movie.year}
+                poster = {movie.poster}
+              />
+            ))} */}
 
-        {/* Display all the movies in array */}
-        {/* {movies.map(movie =>(
+            {/* Display one movie, it would depend on the button event */}
           <MovieCard
-            title = {movie.title}
-            year = {movie.year}
-            poster = {movie.poster}
+            title = {movies[0].title}
+            year = {movies[0].year}
+            poster = {movies[0].poster}
           />
-        ))} */}
+          <NextButton/>
+          <div className='buttonContainer'>
+            <AddFavButton/>
+            <ShowFavsButton/>
+          </div>
+          
+        </div>
 
-        {/* Display one movie, it would depend on the button event */}
-        <MovieCard
-          title = {movies[0].title}
-          year = {movies[0].year}
-          poster = {movies[0].poster}
-        />
-        <NextButton/>
-        <AddFavButton/>
-      
-      <ShowFavsButton/>
     </React.Fragment>
   );
 }

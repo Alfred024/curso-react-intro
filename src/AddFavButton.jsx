@@ -2,8 +2,9 @@ import React from "react";
 
 function AddFavButton() {
     return(
-        <button>
-            Add to favourites
+        <button className="changeButton" >
+            <i class="fa-solid fa-star"></i>
+            Add to favs
         </button>
     );
 }
