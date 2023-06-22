@@ -9,16 +9,11 @@ import { MovieCard } from './MovieCard';
 import './App.css';
 
 
-const movies = [
+const movieDefault = [
   {
-    title: "Endgame",
-    year: 2019,
-    poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
-  },
-  {
-    title: "Shrek",
-    year: 2002,
-    poster: "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+    Title: "Here would be the movie title",
+    Year: 0,
+    Poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
   }
 ];
 
@@ -37,7 +32,7 @@ const favMovies = [
 ];
 
 function App() {
-  const [movieList, setMovieList] = React.useState([]);
+  const [movieList, setMovieList] = React.useState(movieDefault);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
 

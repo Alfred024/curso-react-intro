@@ -1,7 +1,7 @@
 import React from "react";
 
 function SearchMovie({movie, setMovie, setMovieList}) {
-    const url = 'https://movie-database-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1';
+    const url = 'https://movie-database-alternative.p.rapidapi.com/?s=';
     const options = {
         method: 'GET',
         headers: {
@@ -10,15 +10,29 @@ function SearchMovie({movie, setMovie, setMovieList}) {
         }
     };
 
-    async function searchMovie() {
+    async function searchMovie(movieTyped) {
         try {
-            const response = await fetch(url, options);
+            const response = await fetch(`${url}${movieTyped}&r=json&page=1`, options);
             const data = await response.json();
             setMovieList(data.Search);
+            console.log(data);
         } catch (error) {
             console.error('Error while consuming API of movies: '+error);
         }
     }
+
+    function fillSearch() {
+        let movieConverted = '';
+        for (let index = 0; index < movie.length; index++) {
+            if(movie.charAt(index) === ' '){
+                movieConverted += '%20';
+            }else{
+                movieConverted += movie.charAt(index);
+            }
+        }
+        return movieConverted;
+    }
+    
 
     return(
         <div className="searchMovieContainer">
@@ -31,7 +45,8 @@ function SearchMovie({movie, setMovie, setMovieList}) {
                 placeholder="Search a movie  by title"></input>
             <button 
                 onClick={() =>{
-                    searchMovie();
+                    const movieConverted = fillSearch();
+                    searchMovie(movieConverted);
                 }}
                 class="fa-solid fa-magnifying-glass"></button>
         </div>
