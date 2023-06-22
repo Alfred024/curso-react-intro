@@ -1,8 +1,16 @@
 import React from "react";
 
-function NextButton() {
+function NextButton({index, newIndex}) {
     return(
-        <button className="changeCardButton">
+        <button 
+            onClick={() => {
+                if(index == 1){
+                    newIndex(0);
+                }else{
+                    newIndex(++index);
+                }
+            }}
+            className="changeCardButton">
             <i class="fa-solid fa-arrow-right"></i>
         </button>
     );

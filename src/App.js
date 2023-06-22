@@ -8,11 +8,12 @@ import { ShowFavsButton } from './ShowFavsButton';
 import { MovieCard } from './MovieCard';
 import './App.css';
 
+
 const movies = [
   {
-    title: "Shrek 1",
-    year: 2003,
-    poster: "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
+    title: "Endgame",
+    year: 2019,
+    poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
   },
   {
     title: "Shrek",
@@ -21,6 +22,7 @@ const movies = [
   }
 ];
 
+//esto debe almacenarce en el local storage
 const favMovies = [
   {
     title: "Shrek",
@@ -35,34 +37,50 @@ const favMovies = [
 ];
 
 function App() {
-  const [movie, setMovie] = React.useState('');
-  console.log('Searched movie: '+movie);
-  
+  // const url = 'https://movie-database-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1';
+  // const options = {
+  //     method: 'GET',
+  //     headers: {
+  //         'X-RapidAPI-Key': '532d0c1310msh988dee28f976e8ep12bc49jsn1b74a5f379a5',
+  //         'X-RapidAPI-Host': 'movie-database-alternative.p.rapidapi.com'
+  //     }
+  // };
+
+  // async function searchMovie() {
+  //     try {
+  //         const response = await fetch(url, options);
+  //         const data = await response.json();
+  //         movies.push(data[0]);
+  //     } catch (error) {
+  //         console.error('Error while consuming API of movies: '+error);
+  //     }
+  // }
+
+  const [movie, setMovie] = React.useState(movies);
+  const [movieSearch, setMovieSearch] = React.useState('');
+  const [indexCard, setIndexCard] = React.useState(0);
+
   return (
     <React.Fragment>
       <SearchMovie
-        movie={movie}
-        setMovie={setMovie}
+        movie={movieSearch}
+        setMovie={setMovieSearch}
       />
 
         <div className='movieCardContainer'>
-          <BackButton/>
-            {/* Display all the movies in array */}
-            {/* {movies.map(movie =>(
-              <MovieCard
-                title = {movie.title}
-                year = {movie.year}
-                poster = {movie.poster}
-              />
-            ))} */}
-
-            {/* Display one movie, it would depend on the button event */}
-          <MovieCard
-            title = {movies[0].title}
-            year = {movies[0].year}
-            poster = {movies[0].poster}
+          <BackButton
+            index = {indexCard}
+            newIndex = {setIndexCard}
           />
-          <NextButton/>
+          <MovieCard
+            title = {movies[indexCard].title}
+            year = {movies[indexCard].year}
+            poster = {movies[indexCard].poster}
+          />
+          <NextButton
+            index = {indexCard}
+            newIndex = {setIndexCard}
+          />
           <div className='buttonContainer'>
             <AddFavButton/>
             <ShowFavsButton/>
