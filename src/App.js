@@ -37,26 +37,7 @@ const favMovies = [
 ];
 
 function App() {
-  // const url = 'https://movie-database-alternative.p.rapidapi.com/?s=Avengers%20Endgame&r=json&page=1';
-  // const options = {
-  //     method: 'GET',
-  //     headers: {
-  //         'X-RapidAPI-Key': '532d0c1310msh988dee28f976e8ep12bc49jsn1b74a5f379a5',
-  //         'X-RapidAPI-Host': 'movie-database-alternative.p.rapidapi.com'
-  //     }
-  // };
-
-  // async function searchMovie() {
-  //     try {
-  //         const response = await fetch(url, options);
-  //         const data = await response.json();
-  //         movies.push(data[0]);
-  //     } catch (error) {
-  //         console.error('Error while consuming API of movies: '+error);
-  //     }
-  // }
-
-  const [movie, setMovie] = React.useState(movies);
+  const [movieList, setMovieList] = React.useState([]);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
 
@@ -65,6 +46,7 @@ function App() {
       <SearchMovie
         movie={movieSearch}
         setMovie={setMovieSearch}
+        setMovieList={setMovieList}
       />
 
         <div className='movieCardContainer'>
@@ -73,9 +55,9 @@ function App() {
             newIndex = {setIndexCard}
           />
           <MovieCard
-            title = {movies[indexCard].title}
-            year = {movies[indexCard].year}
-            poster = {movies[indexCard].poster}
+            title = {movieList[indexCard].Title}
+            year = {movieList[indexCard].Year}
+            poster = {movieList[indexCard].Poster}
           />
           <NextButton
             index = {indexCard}
