@@ -48,6 +48,7 @@ function App() {
           <BackButton
             index = {indexCard}
             newIndex = {setIndexCard}
+            listLength = {movieList.length}
           />
           <MovieCard
             title = {movieList[indexCard].Title}
@@ -57,6 +58,7 @@ function App() {
           <NextButton
             index = {indexCard}
             newIndex = {setIndexCard}
+            listLength = {movieList.length}
           />
           <div className='buttonContainer'>
             <AddFavButton/>

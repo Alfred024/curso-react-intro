@@ -1,13 +1,13 @@
 import React from "react";
 
-function BackButton({index, newIndex}) {
+function BackButton({index, newIndex, listLength}) {
     
 
     return(
         <button 
             onClick={() => {
                 if(index == 0){
-                    newIndex(1);
+                    newIndex(listLength-1);
                 }else{
                     newIndex(--index);
                 }

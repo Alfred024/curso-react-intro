@@ -1,10 +1,10 @@
 import React from "react";
 
-function NextButton({index, newIndex}) {
+function NextButton({index, newIndex, listLength}) {
     return(
         <button 
             onClick={() => {
-                if(index == 1){
+                if(index == listLength-1){
                     newIndex(0);
                 }else{
                     newIndex(++index);
