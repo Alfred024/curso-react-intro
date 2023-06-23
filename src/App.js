@@ -16,24 +16,10 @@ const movieDefault = [
     Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   }
 ];
-
-//esto debe almacenarce en el local storage
-const favMovies = [
-  {
-    title: "Shrek",
-    year: 2002,
-    poster: "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-  },
-  {
-    title: "Shrek",
-    year: 2002,
-    poster: "https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"
-  }
-];
+let favMovies = [JSON.parse(localStorage.getItem("favsMovies"))];
 
 function App() {
   const [movieList, setMovieList] = React.useState(movieDefault);
-  const [favMvoieList, setFavMovieList] = React.useState([]);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
 
@@ -64,6 +50,7 @@ function App() {
           <div className='buttonContainer'>
             <AddFavButton
               movie={movieList[indexCard]}
+              favMovies={favMovies}
             />
             <ShowFavsButton/>
           </div>
