@@ -35,7 +35,7 @@ button{
  padding: 20px 0px;
 }
 
-.searchMovieContainer i{
+.searchMovieContainer #searchButton{
   background-color: #EEEEEE;
   padding: 10px;
   margin: 10px;
@@ -56,7 +56,7 @@ input:focus{
   margin-right: auto;
   width: 80vw;
   display: grid;
-  grid-template-columns: 1fr auto 1fr ;
+  grid-template-columns: 1fr 280px 1fr ;
   grid-template-rows: repeat(2, auto);
   place-items: center;
   color: #EEEEEE;
@@ -80,10 +80,11 @@ button:hover{
 }
 
 .changeButton{
-  background-color: #FF9A8B;
-  background-image: linear-gradient(225deg, #FF9A8B 0%, #FF6A88 55%, #eed1d7 100%);
+  background-color: black;
   border-radius: 10px;
-  border: solid black 1px;
+  border: solid #EEEEEE 2px;
+  color: #EEEEEE;
+  padding: 15px 10px;
   margin: 10px 0px;
 }
 .buttonContainer{

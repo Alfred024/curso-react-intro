@@ -13,7 +13,7 @@ const movieDefault = [
   {
     Title: "Here would be the movie title",
     Year: 0,
-    Poster: "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"
+    Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   }
 ];
 
@@ -33,6 +33,7 @@ const favMovies = [
 
 function App() {
   const [movieList, setMovieList] = React.useState(movieDefault);
+  const [favMvoieList, setFavMovieList] = React.useState([]);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
 
@@ -61,7 +62,9 @@ function App() {
             listLength = {movieList.length}
           />
           <div className='buttonContainer'>
-            <AddFavButton/>
+            <AddFavButton
+              movie={movieList[indexCard]}
+            />
             <ShowFavsButton/>
           </div>
           

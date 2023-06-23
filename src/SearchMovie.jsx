@@ -44,6 +44,7 @@ function SearchMovie({movie, setMovie, setMovieList}) {
                 }} 
                 placeholder="Search a movie  by title"></input>
             <button 
+                id="searchButton"
                 onClick={() =>{
                     const movieConverted = fillSearch();
                     searchMovie(movieConverted);
