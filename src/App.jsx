@@ -1,10 +1,10 @@
 import React from 'react';
-import { AddFavButton } from './AddFavButton';
-import { SearchMovie } from './SearchMovie';
-import { BackButton } from "./BackButton";
-import { NextButton } from './NextButton';
-import { ShowFavsButton } from './ShowFavsButton';
-import { MovieCard } from './MovieCard';
+import { AddFavButton } from './components/AddFavButton';
+import { SearchMovie } from './components/SearchMovie';
+import { BackButton } from "./components/BackButton";
+import { NextButton } from './components/NextButton';
+import { ShowFavsButton } from './components/ShowFavsButton';
+import { MovieCard } from './components/MovieCard';
 import './App.css';
 
 
@@ -16,16 +16,11 @@ const movieDefault = [
   }
 ];
 
-let favMoviesList = [
-  {
-    Title: "Here would be your favourites movie list",
-    Year: 0,
-    Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-  }
-];
+function useMoviesSaved() {
+  
+}
 
 function App() {
-  
 
   const [favs, setFavs] = React.useState(() =>{
     const favMoviesListSaved = localStorage.getItem('favsMovies');
