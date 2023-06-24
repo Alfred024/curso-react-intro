@@ -1,4 +1,3 @@
-import logo from './platzi.webp';
 import React from 'react';
 import { AddFavButton } from './AddFavButton';
 import { SearchMovie } from './SearchMovie';
@@ -16,13 +15,31 @@ const movieDefault = [
     Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   }
 ];
-let favMovies = [JSON.parse(localStorage.getItem("favsMovies"))];
+
+let favMoviesList = [
+  {
+    Title: "Here would be your favourites movie list",
+    Year: 0,
+    Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
+];
 
 function App() {
+  
+
+  const [favs, setFavs] = React.useState(() =>{
+    const favMoviesListSaved = localStorage.getItem('favsMovies');
+    if(favMoviesListSaved){
+      return favMoviesListSaved;
+    }else{
+      return '[]';
+    }
+  });
+  localStorage.setItem('favsMovies', favs);
   const [movieList, setMovieList] = React.useState(movieDefault);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
-
+  
   return (
     <React.Fragment>
       <SearchMovie
@@ -50,9 +67,13 @@ function App() {
           <div className='buttonContainer'>
             <AddFavButton
               movie={movieList[indexCard]}
-              favMovies={favMovies}
+              favs={favs}
+              setFavs={setFavs}
             />
-            <ShowFavsButton/>
+            <ShowFavsButton
+              // favMoviesSaved = {favMoviesList}
+              // setMovieList = {setMovieList}
+            />
           </div>
           
         </div>
