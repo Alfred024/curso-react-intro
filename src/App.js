@@ -71,8 +71,8 @@ function App() {
               setFavs={setFavs}
             />
             <ShowFavsButton
-              // favMoviesSaved = {favMoviesList}
-              // setMovieList = {setMovieList}
+              favMoviesSaved = {localStorage.getItem('favsMovies')}
+              setMovieList = {setMovieList}
             />
           </div>
           

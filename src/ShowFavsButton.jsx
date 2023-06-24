@@ -1,18 +1,15 @@
 import React from "react";
 
-function ShowFavsButton({setMovieList}) {
+function ShowFavsButton({favMoviesSaved, setMovieList}) {
 
     function displayFavMovies() {
-        const moviesSaved = localStorage.getItem("favsMovies");
-        //const movies = [JSON.parse(moviesSaved)];
-        console.log(moviesSaved);
-        //setMovieList(movies);
+        const moviesSaved = JSON.parse(favMoviesSaved);
+        setMovieList(moviesSaved);
     }
 
     return(
         <button 
             onClick={() =>{
-                console.log('Las favoritas');
                 displayFavMovies();
             }}
             className="changeButton">
