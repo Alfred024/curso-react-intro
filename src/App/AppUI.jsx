@@ -5,6 +5,7 @@ import { BackButton } from "../components/BackButton";
 import { NextButton } from '../components/NextButton';
 import { ShowFavsButton } from '../components/ShowFavsButton';
 import { MovieCard } from '../components/MovieCard';
+import { DeleteFavButton } from '../components/DeleteFavButton';
 
 
 function AppUI({
@@ -15,7 +16,8 @@ function AppUI({
     indexCard,
     setIndexCard,
     favMovies, 
-    setFavMovies
+    setFavMovies,
+    show
 }) {
     return (
         <React.Fragment>
@@ -42,14 +44,20 @@ function AppUI({
               listLength = {movieList.length}
             />
             <div className='buttonContainer'>
+              <DeleteFavButton
+                movieIndex={indexCard}
+                favs={favMovies}
+                setFavs={setFavMovies}
+                show={show}
+              />
               <AddFavButton
                 movie={movieList[indexCard]}
                 favs={favMovies}
                 setFavs={setFavMovies}
+                show={show}
               />
               <ShowFavsButton
                 favMoviesSaved = {localStorage.getItem('favsMovies')}
-              //   favMoviesSaved = {favMovies}
                 setMovieList = {setMovieList}
               />
             </div>

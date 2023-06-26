@@ -28,6 +28,7 @@ function App() {
   const [movieList, setMovieList] = React.useState(movieDefault);
   const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
+  const [buttonView, setButtonView] = React.useState(0);
   
   return (
     <AppUI
@@ -39,6 +40,7 @@ function App() {
       setIndexCard = {setIndexCard}
       favMovies = {favs} 
       setFavMovies = {setFavs}
+      show = {buttonView}
     />
   );
 }

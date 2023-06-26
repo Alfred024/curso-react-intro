@@ -1,6 +1,6 @@
 import React from "react";
 
-function AddFavButton({movie, favs, setFavs}) {
+function AddFavButton({movie, favs, setFavs, show}) {
 
     function saveFavMovie() {
         let moviesSaved = JSON.parse(favs);
@@ -8,16 +8,17 @@ function AddFavButton({movie, favs, setFavs}) {
         const moviesSavedparsed = JSON.stringify(moviesSaved);
         setFavs(moviesSavedparsed);
         console.log('Película guardada');
+        //Aquí debería tener una forma de mostrar e npantalla un tipo de notificación        
     }
     
     return(
         <button 
-            className="changeButton"
+            className={`changeButton ${show === 1 && "hideButton"}`}
             onClick={() =>{
                 saveFavMovie();
             }}
         >
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
             Add to favs
         </button>
     );
