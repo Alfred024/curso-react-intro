@@ -13,7 +13,7 @@ function AddFavButton({movie, favs, setFavs, show}) {
     
     return(
         <button 
-            className={`changeButton ${show === 1 && "hideButton"}`}
+            className={`changeButton ${show === 1 && "hideItem"}`}
             onClick={() =>{
                 saveFavMovie();
             }}

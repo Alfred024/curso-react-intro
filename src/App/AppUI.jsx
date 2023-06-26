@@ -17,7 +17,8 @@ function AppUI({
     setIndexCard,
     favMovies, 
     setFavMovies,
-    show
+    show,
+    setShow
 }) {
     return (
         <React.Fragment>
@@ -59,6 +60,7 @@ function AppUI({
               <ShowFavsButton
                 favMoviesSaved = {localStorage.getItem('favsMovies')}
                 setMovieList = {setMovieList}
+                setShow={setShow}
               />
             </div>
           </div>

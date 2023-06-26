@@ -41,6 +41,7 @@ function App() {
       favMovies = {favs} 
       setFavMovies = {setFavs}
       show = {buttonView}
+      setShow = {setButtonView}
     />
   );
 }
