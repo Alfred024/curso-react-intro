@@ -1,0 +1,4 @@
+La app tiene un problema de implementación, ya que debido a como manejamos el encapsulamiento de los componentes, 
+todos ellos se vueleven a renderizar cuando se produce un cambio en cualquier estado, haciendo la aplicación muy 
+ineficiente, por ejemplo, el componente para buscar películas siemre se re-renderiza cuando hacemos una búsqueda, 
+pero solo el componente "MovieCard" es el que debería de recargarse.
