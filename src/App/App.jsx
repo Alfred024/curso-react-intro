@@ -32,7 +32,7 @@ function App() {
   
   return (
     <AppUI
-      movieTyped = {movieSearch} 
+      
       setMovieTyped = {setMovieSearch}
       movieList = {movieList}
       setMovieList = {setMovieList}

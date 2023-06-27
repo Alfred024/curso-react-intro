@@ -1,27 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMoviesApi } from "../hooks/useMoviesApi";
 
-function SearchMovie({movie, setMovie, setMovieList}) {
-    const url = 'https://movie-database-alternative.p.rapidapi.com/?s=';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '532d0c1310msh988dee28f976e8ep12bc49jsn1b74a5f379a5',
-            'X-RapidAPI-Host': 'movie-database-alternative.p.rapidapi.com'
-        }
-    };
-
-    async function searchMovie(movieTyped) {
-        try {
-            const response = await fetch(`${url}${movieTyped}&r=json&page=1`, options);
-            const data = await response.json();
-            setMovieList(data.Search);
-            console.log(data);
-        } catch (error) {
-            console.error('Error while consuming API of movies: '+error);
-        }
+const url = 'https://movie-database-alternative.p.rapidapi.com/?s=';
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': '532d0c1310msh988dee28f976e8ep12bc49jsn1b74a5f379a5',
+        'X-RapidAPI-Host': 'movie-database-alternative.p.rapidapi.com'
     }
+};
 
-    function fillSearch() {
+function SearchMovie({setMovie, setMovieList}) {
+    const [movieTyped, setMovieTyped] = useState(''); 
+    const movieConverted = fillSearch(movieTyped);
+    const urlAdapted = `${url}${movieConverted}&r=json&page=1`;
+    const [movies, setMovies] = ([]);
+    //const [movies, loading, error] = useMoviesApi(movieTyped);
+    React.useEffect(()=>{
+        const fetchData = async () => {
+            try{
+                const response = await fetch(urlAdapted, options);
+                const jsonData = await response.json();
+                setMovies(jsonData);
+                //setLoading(false);
+            }catch (error) {
+                //setLoading(false);
+                //setError(true);
+                console.error('Error fetching data:', error);
+            }
+            console.log('película');
+            console.log(movies);
+        };
+      
+      fetchData();
+    }, []);
+
+    function fillSearch(movie) {
         let movieConverted = '';
         for (let index = 0; index < movie.length; index++) {
             if(movie.charAt(index) === ' '){
@@ -32,22 +46,22 @@ function SearchMovie({movie, setMovie, setMovieList}) {
         }
         return movieConverted;
     }
-    
 
     return(
         <div className="searchMovieContainer">
             <input 
-                value={movie}
+                value={movieTyped}
                 onChange={(typing) => {
                     let inputVal = typing.target.value;
-                    setMovie(inputVal);
+                    setMovieTyped(inputVal);
                 }} 
                 placeholder="Search a movie  by title"></input>
             <button 
                 id="searchButton"
                 onClick={() =>{
-                    const movieConverted = fillSearch();
-                    searchMovie(movieConverted);
+                    setMovie(movieTyped);
+                    console.log();
+                    //setMovieList(movies);
                 }}
                 class="fa-solid fa-magnifying-glass"></button>
         </div>
