@@ -11,6 +11,8 @@ import { DeleteFavButton } from '../components/DeleteFavButton';
 function AppUI({
     movieList,
     setMovieList,
+    loading,
+    setLoading,
     indexCard,
     setIndexCard,
     favMovies, 
@@ -21,6 +23,7 @@ function AppUI({
     return (
         <React.Fragment>
           <SearchMovie
+            setLoading={setLoading}
             setMovieList={setMovieList}
           />
     
@@ -30,11 +33,16 @@ function AppUI({
               newIndex = {setIndexCard}
               listLength = {movieList.length}
             />
-            <MovieCard
-              title = {movieList[indexCard].Title}
-              year = {movieList[indexCard].Year}
-              poster = {movieList[indexCard].Poster}
-            />
+            {!loading ? (
+              <MovieCard
+                title = {movieList[indexCard].Title}
+                year = {movieList[indexCard].Year}
+                poster = {movieList[indexCard].Poster}
+              />
+            ):(
+              <p>Cargando películas...</p>
+            )}
+            
             <NextButton
               index = {indexCard}
               newIndex = {setIndexCard}

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useMoviesApi } from "../hooks/useMoviesApi";
 
 const movieNotFound = [
     {
@@ -18,16 +17,18 @@ const options = {
     }
 };
 
-function SearchMovie({setMovieList}) {
+function SearchMovie({setLoading, setMovieList}) {
 
     const [consume, setConsume] = React.useState(false);
     const [movieTyped, setMovieTyped] = useState(''); 
 
     React.useEffect(()=>{
-        console.log('Consumir drogas');
-        //setConsume(false);
+        setLoading(true);
+        setTimeout(()=>{
+            consumeAPI(movieTyped);
+        }, 1000);
     },[consume]);
-    //React.useEffect(consumeAPI(movieTyped),[consume]);
+
     async function consumeAPI(movie){
         try{
             const movieConverted = fillSearch(movie);
@@ -41,6 +42,7 @@ function SearchMovie({setMovieList}) {
         }catch (error) {
             console.error('Error fetching data:', error);
         }
+        setLoading(false);
     };
 
     function fillSearch(movie) {
@@ -69,10 +71,8 @@ function SearchMovie({setMovieList}) {
                 id="searchButton"
                 onClick={() =>{
                     setConsume(!consume);
-                    //console.log('m: '+movieConverted);
-                    //consumeAPI(movieConverted);
                 }}
-                class="fa-solid fa-magnifying-glass"></button>
+                className="fa-solid fa-magnifying-glass"/>
         </div>
     );
 }

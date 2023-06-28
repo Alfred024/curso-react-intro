@@ -10,10 +10,6 @@ const movieDefault = [
   }
 ];
 
-function useMoviesSaved() {
-  
-}
-
 function App() {
 
   const [favs, setFavs] = React.useState(() =>{
@@ -26,14 +22,16 @@ function App() {
   });
   localStorage.setItem('favsMovies', favs);
   const [movieList, setMovieList] = React.useState(movieDefault);
-  const [movieSearch, setMovieSearch] = React.useState('');
   const [indexCard, setIndexCard] = React.useState(0);
   const [buttonView, setButtonView] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
   
   return (
     <AppUI
       movieList = {movieList}
       setMovieList = {setMovieList}
+      loading = {loading}
+      setLoading = {setLoading}
       indexCard = {indexCard}
       setIndexCard = {setIndexCard}
       favMovies = {favs} 
