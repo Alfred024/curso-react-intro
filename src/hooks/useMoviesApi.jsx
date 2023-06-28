@@ -33,7 +33,7 @@ function useMoviesApi(movie) {
       fetchData();
     }, []);
 
-    return [movies, loading, error];
+    return [movieFetched];
 }
 
 function fillSearch(movie) {

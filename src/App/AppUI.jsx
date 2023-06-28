@@ -9,8 +9,6 @@ import { DeleteFavButton } from '../components/DeleteFavButton';
 
 
 function AppUI({
-    
-    setMovieTyped,
     movieList,
     setMovieList,
     indexCard,
@@ -23,7 +21,6 @@ function AppUI({
     return (
         <React.Fragment>
           <SearchMovie
-            setMovie={setMovieTyped}
             setMovieList={setMovieList}
           />
     

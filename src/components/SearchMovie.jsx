@@ -10,31 +10,14 @@ const options = {
     }
 };
 
-function SearchMovie({setMovie, setMovieList}) {
+function SearchMovie({setMovieList}) {
     const [movieTyped, setMovieTyped] = useState(''); 
     const movieConverted = fillSearch(movieTyped);
     const urlAdapted = `${url}${movieConverted}&r=json&page=1`;
-    const [movies, setMovies] = ([]);
-    //const [movies, loading, error] = useMoviesApi(movieTyped);
-    React.useEffect(()=>{
-        const fetchData = async () => {
-            try{
-                const response = await fetch(urlAdapted, options);
-                const jsonData = await response.json();
-                setMovies(jsonData);
-                //setLoading(false);
-            }catch (error) {
-                //setLoading(false);
-                //setError(true);
-                console.error('Error fetching data:', error);
-            }
-            console.log('película');
-            console.log(movies);
-        };
-      
-      fetchData();
-    }, []);
+    //const [movies, setMovies] = ([]);
+    const [movies] = useMoviesApi(movieTyped);
 
+    
     function fillSearch(movie) {
         let movieConverted = '';
         for (let index = 0; index < movie.length; index++) {
@@ -59,7 +42,7 @@ function SearchMovie({setMovie, setMovieList}) {
             <button 
                 id="searchButton"
                 onClick={() =>{
-                    setMovie(movieTyped);
+                    //setMovie(movieTyped);
                     console.log();
                     //setMovieList(movies);
                 }}

@@ -32,8 +32,6 @@ function App() {
   
   return (
     <AppUI
-      
-      setMovieTyped = {setMovieSearch}
       movieList = {movieList}
       setMovieList = {setMovieList}
       indexCard = {indexCard}
