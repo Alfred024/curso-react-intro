@@ -19,11 +19,11 @@ const movieNotFound = [
 
 function useMoviesApi(movie) {
     const [loading, setLoading] = React.useState(true);
-    const [movies, setMovies] = ([]);
+    const [movies, setMovies] = React.useState([]);
     const movieConverted = fillSearch(movie);
     const urlAdapted = `${url}${movieConverted}&r=json&page=1`;
 
-    React.useEffect(()=>{
+    React.useEffect(() =>{ 
         const fetchData = async () => {
             try{
                 const response = await fetch(urlAdapted, options);
@@ -41,9 +41,9 @@ function useMoviesApi(movie) {
         };
       
       fetchData();
-    }, []);
+     },[setMovies]);
 
-    return [movies, loading];
+    return [movies];
 }
 
 function fillSearch(movie) {
