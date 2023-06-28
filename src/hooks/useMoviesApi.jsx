@@ -9,9 +9,16 @@ const options = {
     }
 };
 
+const movieNotFound = [
+    {
+    Title: "Película no encontrada",
+    Year: 0,
+    Poster: "https://cdn5.vectorstock.com/i/1000x1000/73/49/404-error-page-not-found-miss-paper-with-white-vector-20577349.jpg"
+    }
+];
+
 function useMoviesApi(movie) {
     const [loading, setLoading] = React.useState(true);
-    const [error, setError] = React.useState(false);
     const [movies, setMovies] = ([]);
     const movieConverted = fillSearch(movie);
     const urlAdapted = `${url}${movieConverted}&r=json&page=1`;
@@ -20,12 +27,15 @@ function useMoviesApi(movie) {
         const fetchData = async () => {
             try{
                 const response = await fetch(urlAdapted, options);
-                const jsonData = await response.json();
-                setMovies(jsonData);
+                const data = await response.json();
+                if(data.Search){
+                    setMovies(data.Search);
+                }else{
+                    setMovies(movieNotFound);
+                }
                 setLoading(false);
             }catch (error) {
                 setLoading(false);
-                setError(true);
                 console.error('Error fetching data:', error);
             }
         };
@@ -33,7 +43,7 @@ function useMoviesApi(movie) {
       fetchData();
     }, []);
 
-    return [movieFetched];
+    return [movies, loading];
 }
 
 function fillSearch(movie) {
