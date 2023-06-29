@@ -34,6 +34,7 @@ function AppUI() {
                 <SearchMovie
                   setLoading={setLoading}
                   setMovieList={setMovieList}
+                  setButtonView={setButtonView}
                 />
           
                 <div className='movieCardContainer'>
@@ -57,6 +58,7 @@ function AppUI() {
                     newIndex = {setIndexCard}
                     listLength = {movieList.length}
                   />
+
                   <div className='buttonContainer'>
                     <DeleteFavButton
                       movieIndex={indexCard}
@@ -75,6 +77,7 @@ function AppUI() {
                       setMovieList = {setMovieList}
                       show={buttonView}
                       setShow={setButtonView}
+                      setIndex={setIndexCard}
                     />
                   </div>
                 </div>
@@ -87,6 +90,7 @@ function AppUI() {
                 {openModal && (
                   <Modal>
                     <CreateMovieModal
+                      setFavs = {setFavMovies}
                       setOpenModal={setOpenModal}/>
                   </Modal>
                 )}

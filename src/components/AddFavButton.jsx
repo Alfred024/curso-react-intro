@@ -6,14 +6,14 @@ function AddFavButton({movie, favs, setFavs, show}) {
         let moviesSaved = JSON.parse(favs);
         moviesSaved.push(movie);
         const moviesSavedparsed = JSON.stringify(moviesSaved);
+        console.log(moviesSavedparsed);
         setFavs(moviesSavedparsed);
-        console.log('Película guardada');
-        //Aquí debería tener una forma de mostrar e npantalla un tipo de notificación        
+        //Mostrar notificación
     }
     
     return(
         <button 
-            className={`changeButton ${show === 1 && "hideItem"}`}
+            className={`changeButton ${show===1 && "hideItem"}`}
             onClick={() =>{
                 saveFavMovie();
             }}

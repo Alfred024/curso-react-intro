@@ -7,13 +7,12 @@ function DeleteFavButton({movieIndex, favs, setFavs, show}) {
         moviesSaved.splice(movieIndex,1);
         const moviesSavedparsed = JSON.stringify(moviesSaved);
         setFavs(moviesSavedparsed);
-        console.log('Película borrada');
-        //Aquí debería tener una forma de mostrar e npantalla un tipo de notificación        
+        // Aquí debería tener una forma de mostrar e npantalla un tipo de notificación        
     }
 
     return(
         <button
-            className={`changeButton ${show === 0 && "hideItem"}`}
+            className={`changeButton ${show===0 && "hideItem"}`}
             onClick={() =>{
                 deleteFavMovie();
             }}

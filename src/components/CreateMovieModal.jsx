@@ -1,6 +1,6 @@
 import React from "react";
 
-function CreateMovieModal({setOpenModal}) {
+function CreateMovieModal({setFavs, setOpenModal}) {
     const [movieName, setMovieName] = React.useState('');
     const [movieYear, setMovieYear] = React.useState('');
     const [moviePoster, setMoviePoster] = React.useState('');
@@ -15,12 +15,10 @@ function CreateMovieModal({setOpenModal}) {
             Year: movieYear,
             Poster: moviePoster
         }
-
         
         moviesParsed.push(newMovie);
         const movieString = JSON.stringify(moviesParsed);
-        console.log(movieString);
-        //localStorage.setItem('favsMovies', movieString)
+        setFavs(movieString);
     }
 
     return (

@@ -11,7 +11,7 @@ const movieDefault = [
 ];
 
 function MovieProvider({children}) {
-    const [favs, setFavs] = React.useState(() =>{
+    const [favMovies, setFavMovies] = React.useState(() =>{
         const favMoviesListSaved = localStorage.getItem('favsMovies');
         if(favMoviesListSaved){
           return favMoviesListSaved;
@@ -19,7 +19,7 @@ function MovieProvider({children}) {
           return '[]';
         }
     });
-    localStorage.setItem('favsMovies', favs);
+    localStorage.setItem('favsMovies', favMovies);
     const [movieList, setMovieList] = React.useState(movieDefault);
     const [indexCard, setIndexCard] = React.useState(0);
     const [buttonView, setButtonView] = React.useState(0);
@@ -35,8 +35,8 @@ function MovieProvider({children}) {
                 setLoading,
                 indexCard,
                 setIndexCard,
-                favs, 
-                setFavs,
+                favMovies, 
+                setFavMovies,
                 buttonView,
                 setButtonView,
                 openModal,

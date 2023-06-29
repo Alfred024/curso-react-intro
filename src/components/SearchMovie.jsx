@@ -8,6 +8,14 @@ const movieNotFound = [
     }
 ];
 
+const movieDefault = [
+    {
+      Title: "Here would be the movie title",
+      Year: 0,
+      Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+    }
+];
+
 const url = 'https://movie-database-alternative.p.rapidapi.com/?s=';
 const options = {
     method: 'GET',
@@ -17,7 +25,7 @@ const options = {
     }
 };
 
-function SearchMovie({setLoading, setMovieList}) {
+function SearchMovie({setLoading, setMovieList,setButtonView}) {
 
     const [consume, setConsume] = React.useState(false);
     const [movieTyped, setMovieTyped] = useState(''); 
@@ -26,6 +34,7 @@ function SearchMovie({setLoading, setMovieList}) {
         setLoading(true);
         setTimeout(()=>{
             consumeAPI(movieTyped);
+            setButtonView(0);
         }, 1000);
     },[consume]);
 
@@ -34,11 +43,17 @@ function SearchMovie({setLoading, setMovieList}) {
             const movieConverted = fillSearch(movie);
             const response = await fetch(`${url}${movieConverted}&r=json&page=1` , options);
             const data = await response.json();
-            if(data.Search){
-                setMovieList(data.Search);
+            if(movieTyped === ''){
+                setMovieList(movieDefault);
             }else{
-                setMovieList(movieNotFound);
+                if(data.Search){
+                    setMovieList(data.Search);
+                }
+                else{
+                    setMovieList(movieNotFound);
+                }
             }
+            
         }catch (error) {
             console.error('Error fetching data:', error);
         }
