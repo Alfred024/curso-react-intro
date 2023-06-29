@@ -86,7 +86,8 @@ function AppUI() {
 
                 {openModal && (
                   <Modal>
-                    <CreateMovieModal/>
+                    <CreateMovieModal
+                      setOpenModal={setOpenModal}/>
                   </Modal>
                 )}
                 

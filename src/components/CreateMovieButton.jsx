@@ -4,7 +4,7 @@ function CreateMovieButton({setOpenModal}) {
     return(
         <button 
             className="createMovieButton"
-            onClick={() =>{setOpenModal(state => !state)}}>
+            onClick={() =>{setOpenModal(true)}}>
             +
         </button>
     );
