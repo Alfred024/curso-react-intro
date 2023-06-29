@@ -79,6 +79,32 @@ button:hover{
   border: solid #EEEEEE 2px;
 }
 
+
+
+.movieCardLoading {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  width: 220px;
+  height: 450px;
+}
+
+.loader{
+  border: 5px solid;
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  border-color: #EEEEEE transparent transparent;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100%{
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
 .changeButton{
   background-color: black;
   border-radius: 10px;

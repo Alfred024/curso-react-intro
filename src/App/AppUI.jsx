@@ -5,6 +5,7 @@ import { BackButton } from "../components/BackButton";
 import { NextButton } from '../components/NextButton';
 import { ShowFavsButton } from '../components/ShowFavsButton';
 import { MovieCard } from '../components/MovieCard';
+import { MovieCardLoading } from '../components/MovieCardLoading';
 import { DeleteFavButton } from '../components/DeleteFavButton';
 
 
@@ -40,7 +41,7 @@ function AppUI({
                 poster = {movieList[indexCard].Poster}
               />
             ):(
-              <p>Cargando películas...</p>
+              <MovieCardLoading/>
             )}
             
             <NextButton
