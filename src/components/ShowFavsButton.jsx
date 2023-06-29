@@ -1,6 +1,6 @@
 import React from "react";
 
-function ShowFavsButton({favMoviesSaved, setMovieList, setShow}) {
+function ShowFavsButton({favMoviesSaved, setMovieList, show,setShow}) {
 
     function displayFavMovies() {
         const moviesSaved = JSON.parse(favMoviesSaved);
@@ -11,7 +11,7 @@ function ShowFavsButton({favMoviesSaved, setMovieList, setShow}) {
         <button 
             onClick={() =>{
                 displayFavMovies();
-                setShow(1);
+                setShow(!show);
             }}
             className="changeButton">
             Show favs

@@ -24,6 +24,7 @@ function MovieProvider({children}) {
     const [indexCard, setIndexCard] = React.useState(0);
     const [buttonView, setButtonView] = React.useState(0);
     const [loading, setLoading] = React.useState(false);
+    const [openModal, setOpenModal] = React.useState(true);
 
     return(
         <MovieContext.Provider
@@ -37,7 +38,9 @@ function MovieProvider({children}) {
                 favs, 
                 setFavs,
                 buttonView,
-                setButtonView
+                setButtonView,
+                openModal,
+                setOpenModal
             }}>
             {children}
         </MovieContext.Provider>

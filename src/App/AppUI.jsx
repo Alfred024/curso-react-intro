@@ -8,7 +8,7 @@ import { ShowFavsButton } from '../components/ShowFavsButton';
 import { MovieCard } from '../components/MovieCard';
 import { MovieCardLoading } from '../components/MovieCardLoading';
 import { DeleteFavButton } from '../components/DeleteFavButton';
-
+import { Modal } from '../components/Modal';
 
 function AppUI() {
     return (
@@ -23,9 +23,12 @@ function AppUI() {
               favMovies, 
               setFavMovies,
               buttonView,
-              setButtonView
+              setButtonView,
+              openModal,
+              setOpenModal
             }) =>(
               <>
+                
                 <SearchMovie
                   setLoading={setLoading}
                   setMovieList={setMovieList}
@@ -68,10 +71,18 @@ function AppUI() {
                     <ShowFavsButton
                       favMoviesSaved = {localStorage.getItem('favsMovies')}
                       setMovieList = {setMovieList}
+                      show={buttonView}
                       setShow={setButtonView}
                     />
                   </div>
                 </div>
+
+                {openModal && (
+                  <Modal>
+                    SOy un modal askjdhsa
+                  </Modal>
+                )}
+                
               </>
             )}
               
