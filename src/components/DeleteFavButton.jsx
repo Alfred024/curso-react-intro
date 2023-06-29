@@ -13,7 +13,7 @@ function DeleteFavButton({movieIndex, favs, setFavs, show}) {
 
     return(
         <button
-            className={`changeButton ${show === 0 && "hideItem"}`}
+            className={`changeButton ${show === 0 && 'hideItem'}`}
             onClick={() =>{
                 deleteFavMovie();
             }}
