@@ -31,7 +31,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://Alfred024.github.io/Movies_API_with_React",
+  "homepage": ".",
   "devDependencies": {
     "gh-pages": "^5.0.0"
   }
