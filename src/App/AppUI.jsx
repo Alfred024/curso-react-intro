@@ -8,6 +8,8 @@ import { ShowFavsButton } from '../components/ShowFavsButton';
 import { MovieCard } from '../components/MovieCard';
 import { MovieCardLoading } from '../components/MovieCardLoading';
 import { DeleteFavButton } from '../components/DeleteFavButton';
+import { CreateMovieButton } from '../components/CreateMovieButton';
+import { CreateMovieModal } from "../components/CreateMovieModal";
 import { Modal } from '../components/Modal';
 
 function AppUI() {
@@ -77,9 +79,14 @@ function AppUI() {
                   </div>
                 </div>
 
+                <div className='createMovieContainer'>
+                    <CreateMovieButton
+                      setOpenModal={setOpenModal}/>
+                </div>
+
                 {openModal && (
                   <Modal>
-                    SOy un modal askjdhsa
+                    <CreateMovieModal/>
                   </Modal>
                 )}
                 

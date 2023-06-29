@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 
 function Modal({children}) {
     return ReactDOM.createPortal(
-        <div className="ModalX">
+        <div className="movieModalContainer">
             {children}
         </div>,
         document.getElementById('modal')

@@ -24,7 +24,7 @@ function MovieProvider({children}) {
     const [indexCard, setIndexCard] = React.useState(0);
     const [buttonView, setButtonView] = React.useState(0);
     const [loading, setLoading] = React.useState(false);
-    const [openModal, setOpenModal] = React.useState(true);
+    const [openModal, setOpenModal] = React.useState(false);
 
     return(
         <MovieContext.Provider
