@@ -8,10 +8,8 @@ import { CreateMovieButton } from '../components/CreateMovieButton';
 
 function App() {
 
-  //useLocalFavouriteMovies --> custom hook que acceda al localSotarge para mostrar las películas guardadas
-    //retorna un estado con las pelícuas y una función para actualizarlas
   const [movies, setMovies] = React.useState([]);
-
+  
   //useCurrentIndex/o declarar un estado global 
   //useOpenModal --> consume un estado 
 
