@@ -2,3 +2,10 @@ La app tiene un problema de implementación, ya que debido a como manejamos el e
 todos ellos se vueleven a renderizar cuando se produce un cambio en cualquier estado, haciendo la aplicación muy 
 ineficiente, por ejemplo, el componente para buscar películas siemre se re-renderiza cuando hacemos una búsqueda, 
 pero solo el componente "MovieCard" es el que debería de recargarse.
+
+*Hacer composicipon de componentes para no usar Context
+*Crear custom hooks
+*Tratar de implementar un HOC
+*Cuando se borre o se agregue una película debe de verse reflejado en ese momento
+*Manejo en el caso de no encontrar un resultado con la búsqueda
+*
