@@ -1,13 +1,13 @@
 import React from "react";
 
-function NextButton({index, newIndex, listLength}) {
+function NextButton({indexCard, setIndexCard, listLength}) {
     return(
         <button 
             onClick={() => {
-                if(index == listLength-1){
-                    newIndex(0);
+                if(indexCard == listLength-1){
+                    setIndexCard(0);
                 }else{
-                    newIndex(++index);
+                    setIndexCard((index) => index + 1);
                 }
             }}
             className="changeCardButton">

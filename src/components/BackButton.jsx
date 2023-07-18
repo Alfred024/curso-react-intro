@@ -1,15 +1,13 @@
 import React from "react";
 
-function BackButton({index, newIndex, listLength}) {
-    
-
+function BackButton({indexCard, setIndexCard, listLength}) {
     return(
         <button 
             onClick={() => {
-                if(index == 0){
-                    newIndex(listLength-1);
+                if(indexCard == 0){
+                    setIndexCard(listLength-1);
                 }else{
-                    newIndex(--index);
+                    setIndexCard((index) => index - 1);
                 }
             }}
             className="changeCardButton">
