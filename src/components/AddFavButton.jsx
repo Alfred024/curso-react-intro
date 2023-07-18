@@ -1,14 +1,15 @@
 import React from "react";
+import { useMoviesStoraged } from "../utils/useMoviesStoraged";
 
-function AddFavButton({movie, favs, setFavs, show}) {
+function AddFavButton({movies, setMovies, indexCard, setIndexCard}) {
+    let [moviesStoraged] = useMoviesStoraged();
 
     function saveFavMovie() {
-        let moviesSaved = JSON.parse(favs);
-        moviesSaved.push(movie);
-        const moviesSavedparsed = JSON.stringify(moviesSaved);
-        console.log(moviesSavedparsed);
-        setFavs(moviesSavedparsed);
-        //Mostrar notificación
+        setIndexCard((index) => index + 1);
+        moviesStoraged.push(movies[indexCard]);
+        const moviesString = JSON.stringify(moviesStoraged);
+        localStorage.setItem('favsMovies', moviesString);
+        setMovies(moviesStoraged);
     }
     
     return(

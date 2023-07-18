@@ -1,18 +1,18 @@
 import React from "react";
+import { useMoviesStoraged } from "../utils/useMoviesStoraged";
 
-function ShowFavsButton({favMoviesSaved, setMovieList, show, setShow, setIndex}) {
+function ShowFavsButton({setMovies, setIndexCard}) {
+    let [moviesStoraged] = useMoviesStoraged();
 
     function displayFavMovies() {
-        const moviesSaved = JSON.parse(favMoviesSaved);
-        setMovieList(moviesSaved);
+        setIndexCard(0);
+        setMovies(moviesStoraged);
     }
 
     return(
         <button 
             onClick={() =>{
-                setIndex(0);
                 displayFavMovies();
-                setShow(1);
             }}
             className={`changeButton ${show===1 && "hideItem"}`}>
             Show favs
