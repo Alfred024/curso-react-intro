@@ -1,65 +1,37 @@
 import React from 'react';
+
+//Components
 import { SearchMovie } from '../components/SearchMovie';
-import { BackButton } from '../components/BackButton';
-import { MovieCard } from '../components/MovieCard';
-import { NextButton } from '../components/NextButton';
-import { DeleteFavButton } from '../components/DeleteFavButton';
+import { MoviesCardContainer } from '../components/MoviesCardContainer';
+//Component that contain the modal
 import { CreateMovieButton } from '../components/CreateMovieButton';
+
+const movieDefault = [
+  {
+    Title: "Here would be the movie title",
+    Year: 0,
+    Poster: "https://images.pexels.com/photos/3709369/pexels-photo-3709369.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }
+];
 
 function App() {
 
-  const [movies, setMovies] = React.useState([]);
-  
-  //useCurrentIndex/o declarar un estado global 
-  //useOpenModal --> consume un estado 
+  const [movies, setMovies] = React.useState(movieDefault);
 
   return (
       <>
         <SearchMovie
           setMovies = {setMovies}
         />
+
+        <MoviesCardContainer
+          movies={movies}
+        />        
+
+        <div className='createMovieContainer'>
+            <CreateMovieButton/>
+        </div>
          
-        <div className='movieCardContainer' >
-          <BackButton
-            currenIndex = {0}
-          />
-          {
-            movies.map(movieItem =>{
-              <MovieCard
-                title = {movieItem[indexCard].Title}
-                year = {movieItem[indexCard].Year}
-                poster = {movieItem[indexCard].Poster}
-              />
-            })
-          }
-          <NextButton
-            currenIndex = {0}
-          />
-        </div>
-
-        <div className='buttonsContainer'>
-          <DeleteFavButton
-            currenIndex = {0}
-          />
-          <AddFavButton
-            currenIndex = {0}
-          />
-          <ShowFavsButton
-            setMovies = {setMovies}
-          />
-        </div>
-
-        {/* Tal vez sería bueno que este componente contuviera al Modal, de esta forma podríamos tener un estado local del componente y manejar el render del modal sin declarar variables externas */}
-        <div className='createMovieContainer'>
-            <CreateMovieButton
-              setOpenModal={setOpenModal}/>
-        </div>
-
-        {/* Este componente va a contener el modal */}
-        <div className='createMovieContainer'>
-          <CreateMovieButton/>
-        </div>
-                
       </>
   );
 }
