@@ -1,9 +1,10 @@
 import React from "react";
 import { useMoviesAPI } from "../utils/useMoviesAPI";
 
-function SearchMovie({setMovies, setLoading}) {
+//Aún no sé si esto funciona, mi duda está en si volverá a ejecutar el customHook una vezcambiando el estado de movieTyped
+function SearchMovie({setMovies}) {
     const [movieTyped, setMovieTyped] = React.useState('');
-    const [movies, loading] = useMoviesAPI(movieTyped);
+    const [movies] = useMoviesAPI(movieTyped);
     
     return(
         <div className="searchMovieContainer">
@@ -17,7 +18,6 @@ function SearchMovie({setMovies, setLoading}) {
             <button 
                 id="searchButton"
                 onClick={() =>{
-                    setLoading(loading);
                     setMovies(movies);
                 }}
                 className="fa-solid fa-magnifying-glass"/>

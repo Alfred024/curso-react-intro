@@ -1,5 +1,3 @@
-import React from "react";
-
 const movieNotFound = [
     {
     Title: "Película no encontrada",
@@ -31,7 +29,6 @@ function useMoviesAPI(movieTyped) {
     React.useEffect(()=>{
         setTimeout(()=>{
             consumeAPI(movieTyped);
-            setButtonView(0);
         }, 1000);
     },[]);
 

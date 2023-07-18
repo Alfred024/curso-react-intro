@@ -1,6 +1,6 @@
 import React from "react";
-import { Modal } from "./Modal";
-import { CreateMovieModal } from "./CreateMovieModal";
+import { Modal } from "../Modal";
+import { CreateMovieModal } from "../CreateMovieModal";
 
 function CreateMovieButton() {
     const [showModal, setShowModal] = React.useState(false);

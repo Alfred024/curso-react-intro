@@ -1,10 +1,15 @@
 import React from 'react';
+//import { MoviesCardContainer } from '../components/MoviesCardContainer';
 
 //Components
-import { SearchMovie } from '../components/SearchMovie';
-import { MoviesCardContainer } from '../components/MoviesCardContainer';
-//Component that contain the modal
-import { CreateMovieButton } from '../components/CreateMovieButton';
+import { SearchMovie } from '../SearchMovie';
+import { BackButton } from '../BackButton';
+import { MovieCard } from '../MovieCard';
+import { NextButton } from '../NextButton';
+import { DeleteFavButton } from '../DeleteFavButton';
+import { AddFavButton } from '../AddFavButton';
+import { ShowFavsButton } from '../ShowFavsButton';
+import { CreateMovieButton } from '../CreateMovieButton';
 
 const movieDefault = [
   {
@@ -15,8 +20,8 @@ const movieDefault = [
 ];
 
 function App() {
-
   const [movies, setMovies] = React.useState(movieDefault);
+  const [indexCard, setIndexCard] = React.useState(0);
 
   return (
       <>
@@ -24,9 +29,45 @@ function App() {
           setMovies = {setMovies}
         />
 
-        <MoviesCardContainer
-          movies={movies}
-        />        
+        <div className='movieCardContainer' >
+          <BackButton
+            indexCard = {indexCard}
+            setIndexCard = {setIndexCard}
+            listLength = {movies.length}
+          />
+          {
+            movies.map(movieItem =>{
+              <MovieCard
+                title = {movieItem[indexCard].Title}
+                year = {movieItem[indexCard].Year}
+                poster = {movieItem[indexCard].Poster}
+              />
+            })
+          }
+          <NextButton
+            indexCard = {indexCard}
+            setIndexCard = {setIndexCard}
+            listLength = {movies.length}
+          />
+        </div>       
+
+        <div className='buttonsContainer'>
+          <DeleteFavButton
+            setMovies = {movies}
+            indexCard = {indexCard}
+            setIndexCard = {setIndexCard}
+          />
+          <AddFavButton
+            movies = {movies} 
+            setMovies = {setMovies} 
+            indexCard = {indexCard} 
+            setIndexCard = {setIndexCard}
+          />
+          <ShowFavsButton
+            setMovies = {setMovies}
+            setIndexCard={setIndexCard}
+          />
+        </div>
 
         <div className='createMovieContainer'>
             <CreateMovieButton/>
